@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pituto-AI | Automation Engine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#131b2e",
+                    "on-secondary-container": "#fefcff",
+                    "on-tertiary-container": "#fffbff",
+                    "primary": "#6b38d4",
+                    "on-surface": "#131b2e",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#ffdcbb",
+                    "surface-container-highest": "#dae2fd",
+                    "on-secondary-fixed-variant": "#003ea8",
+                    "secondary-container": "#316bf3",
+                    "on-tertiary-fixed": "#2c1700",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#eaedff",
+                    "surface-bright": "#faf8ff",
+                    "on-error": "#ffffff",
+                    "background": "#faf8ff",
+                    "secondary-fixed": "#dbe1ff",
+                    "on-surface-variant": "#494454",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#6d3bd7",
+                    "inverse-primary": "#d0bcff",
+                    "on-secondary-fixed": "#00174b",
+                    "surface-container-low": "#f2f3ff",
+                    "on-primary-fixed-variant": "#5516be",
+                    "tertiary-container": "#a76500",
+                    "surface": "#faf8ff",
+                    "surface-container-high": "#e2e7ff",
+                    "inverse-on-surface": "#eef0ff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#dae2fd",
+                    "primary-container": "#8455ef",
+                    "primary-fixed": "#e9ddff",
+                    "surface-dim": "#d2d9f4",
+                    "on-tertiary-fixed-variant": "#673d00",
+                    "primary-fixed-dim": "#d0bcff",
+                    "on-error-container": "#93000a",
+                    "secondary": "#0051d5",
+                    "outline": "#7b7486",
+                    "inverse-surface": "#283044",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#23005c",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#ffb869",
+                    "secondary-fixed-dim": "#b4c5ff",
+                    "outline-variant": "#cbc3d7",
+                    "tertiary": "#855000",
+                    "on-primary-container": "#fffbff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "xl": "80px",
+                    "md": "24px",
+                    "xs": "8px",
+                    "lg": "48px",
+                    "base": "4px",
+                    "sm": "16px"
+            },
+            "fontFamily": {
+                    "label-md": ["Geist"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0f172a; /* Custom dark deep space color */
+        }
+        .console-bg {
+            background-color: #020617;
+            border: 1px solid #1e293b;
+        }
+        .ai-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .electric-glow {
+            box-shadow: 0 0 20px rgba(49, 107, 243, 0.3);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-on-secondary-container font-body-md overflow-hidden">
+<!-- Fixed SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-on-background border-r border-outline-variant flex flex-col py-lg px-md z-50">
+<div class="mb-lg">
+<h1 class="text-headline-md font-headline-md font-bold text-primary">Pituto-AI</h1>
+<p class="text-label-sm font-label-sm text-outline-variant tracking-wider uppercase opacity-70">Executive Automation</p>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-150 group" href="index.html">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary">account_circle</span>
+<span class="text-label-md font-label-md">Profile</span>
+</a>
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-150 group" href="recomendaciones-mercado.html">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary">psychology</span>
+<span class="text-label-md font-label-md">AI Recommendations</span>
+</a>
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-150 group" href="fabrica-cv-optimizado.html">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary">edit_note</span>
+<span class="text-label-md font-label-md">CV Builder</span>
+</a>
+<a class="flex items-center gap-sm p-sm rounded-lg text-primary font-bold border-r-2 border-primary bg-surface-container-highest transition-colors duration-150" href="motor-automatizacion.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="text-label-md font-label-md">Automation Engine</span>
+</a>
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-150 group" href="historial-aplicaciones.html">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary">history</span>
+<span class="text-label-md font-label-md">History</span>
+</a>
+<a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors duration-150 group" href="configuracion.html">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-lg border-t border-outline-variant/20 flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/30">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior tech executive with a clean-cut look, wearing a minimalist dark blazer, against a soft-focus office background with blue atmospheric lighting, matching a premium SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC2pgUdQ_A6lFpZl_oVHSF6hluHRDxyuEvT83W8FqD5JBuoPDeCNOqI7fZ44_uBBXrZNESITuaLp3az4DOdaWDc6HuS_q-HcrHQChpaI6wpT6Stawbzr9j9kLdD5PaxeSJvZsoOJX7LXu4lbCQ27a9UjfJSBholpJlnEKtZ-DfGH_OZrgY2w7WhB5STpPoj6F7eiaKGgzgM8UPbYYLG4I9nzdb3Oy1xtxkf_MQ6Fy4oAXdLFg2jaJJCGjrtrJcToqK2Dzo9ePVCQ"/>
+</div>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-secondary-container">Alex Rivera</span>
+<span class="text-label-sm font-label-sm text-outline-variant">Premium Plan</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen relative overflow-y-auto bg-on-background">
+<!-- Background Animation Layer -->
+
+<!-- Top Header -->
+<header class="h-16 flex justify-between items-center px-lg sticky top-0 bg-on-background/80 backdrop-blur-md z-40">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">bolt</span>
+<h2 class="text-headline-md font-headline-md font-bold">Automation Engine</h2>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-xs px-sm py-xs bg-secondary-container/20 rounded-full border border-secondary-container/30">
+<div class="w-2 h-2 rounded-full bg-secondary ai-pulse"></div>
+<span class="text-label-sm font-label-sm text-secondary">AI Scraper Active</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer hover:text-primary transition-colors">help_outline</span>
+</div>
+</header>
+<div class="p-lg max-w-container-max mx-auto space-y-lg relative z-10">
+<!-- Bento Layout Configuration -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Platform Control Panel -->
+<div class="col-span-12 lg:col-span-8 glass-card rounded-xl p-md flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<h3 class="text-headline-md font-headline-md">Target Platforms</h3>
+<span class="text-label-sm font-label-sm text-outline-variant">Connect your accounts in Settings</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-sm">
+<!-- LinkedIn Card -->
+<div class="p-md rounded-lg border border-outline-variant/30 bg-surface-container-lowest/5 flex flex-col gap-sm hover:border-secondary/50 transition-all group">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-[#0077b5]/20 flex items-center justify-center">
+<img class="w-6 h-6" data-alt="Official LinkedIn corporate logo icon in a minimalist flat style, high resolution vector aesthetic with vibrant blue color against a transparent or very dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsI6A4jb5xayvvyyTSO-iMlM-EHlakFoy8dsiV7IXR5ctpLMEzjwM_IiMT7eda0C6spJAcAq7v4qBMy-plCmYD3X5-XQi_YMfQTexcELJZ7Tbmgnyhq2ClfVz2h5DiUP51LZJvL-9TjRDZoTnKUU-gWCBjbq16KZy_AUTwileiIuEZaw-SgMfASQ8vfpe0VXh_VWrbFeKIbv1wdH3PoU5eODue6R6qOBznBHafzsdkgSgmi1KJeFOh8BvxRuSBd2b2pufluFpobw"/>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div>
+<p class="text-label-md font-label-md font-bold">LinkedIn</p>
+<p class="text-label-sm font-label-sm text-outline-variant">Scraping &amp; EasyApply</p>
+</div>
+</div>
+<!-- Getonbrd Card -->
+<div class="p-md rounded-lg border border-outline-variant/30 bg-surface-container-lowest/5 flex flex-col gap-sm hover:border-secondary/50 transition-all group">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-[#142d54]/20 flex items-center justify-center">
+<img class="w-6 h-6" data-alt="Official Getonbrd tech jobs portal logo, minimalist digital art style, featuring its signature rocket or brand mark in clean high-contrast colors suitable for a dark mode dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzrc6w6tJZIVO76Z119yRPD_ZCdzyjNsaFV3qP7kRmt0208HmOCRXRPc_rr5iUUBGIDeyTh5WJ2_1w-jNahiO6vQ2HWSBnCX2TgeA0ObVgJ64aOTYdCf_rWFaOv1Sl81Vy14BDT-kwY1C7Q_6vzr5UXrLHrCUa0EMm_IggheqR7pPrZ-HawbUaQ2Hwl4HPKu-dcnrngnnlvrkLtkioIgA4J2EOO9Z8qL_T6aiD5mrVNpSb7KfiyI5l5UYk1P0OTmtZHqjCYenGsQ"/>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div>
+<p class="text-label-md font-label-md font-bold">Getonbrd</p>
+<p class="text-label-sm font-label-sm text-outline-variant">LATAM Tech Scraper</p>
+</div>
+</div>
+<!-- Wellfound Card -->
+<div class="p-md rounded-lg border border-outline-variant/30 bg-surface-container-lowest/5 flex flex-col gap-sm hover:border-secondary/50 transition-all group">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-lg bg-[#000000]/40 flex items-center justify-center">
+<img class="w-6 h-6" data-alt="Wellfound formerly AngelList minimalist logo, featuring its peace sign or wordmark, styled for high-end tech dark mode user interface with soft lighting and professional feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUn2s4-iLmqWexSuj4MHsbbQmQcVWMkoSNBIKb8aRsH4PnhgFU37xIsxP2u3d-we3ig78f_1v7FXdPltCG73bIJNVnIXniiJviWZwgo_cH-mb4Ma64rjHiY68BF0TbgW_Elj0mWlRyBbkLbHvX0L06WiOUmD8TwEhvG-ZE8CBs-NIeXD4H9NM5QG8ACBy0vI8KyFfbf-veuzvdaD4gjveXQlgxvzM1tILyVNnzNrw-7X__b6tbvue9MmyxpqQlENf5wJ9LI4zvuQ"/>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div>
+<p class="text-label-md font-label-md font-bold">Wellfound</p>
+<p class="text-label-sm font-label-sm text-outline-variant text-error/80">Disconnected</p>
+</div>
+</div>
+</div>
+<div class="mt-md border-t border-outline-variant/10 pt-md grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="text-label-md font-label-md text-outline-variant">Max applications per day</label>
+<input class="w-full bg-on-background/50 border border-outline-variant/30 rounded-lg px-sm py-xs text-on-secondary-container focus:ring-2 focus:ring-secondary/50 focus:border-secondary outline-none transition-all" type="number" value="25"/>
+<p class="text-label-sm font-label-sm text-outline-variant opacity-60">Higher limits may increase risk of account flagging.</p>
+</div>
+<div class="space-y-xs">
+<label class="text-label-md font-label-md text-outline-variant">Target countries</label>
+<div class="flex flex-wrap gap-xs">
+<div class="px-sm py-xs bg-primary/20 text-primary border border-primary/30 rounded-full flex items-center gap-xs">
+<span class="text-label-sm font-label-sm">Chile</span>
+<span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</div>
+<div class="px-sm py-xs bg-primary/20 text-primary border border-primary/30 rounded-full flex items-center gap-xs">
+<span class="text-label-sm font-label-sm">Remote LATAM</span>
+<span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</div>
+<button class="px-sm py-xs bg-slate-800 text-outline-variant border border-dashed border-outline-variant/50 rounded-full hover:bg-slate-700 transition-colors">
+<span class="text-label-sm font-label-sm">+ Add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Engine Status / High Action Card -->
+<div class="col-span-12 lg:col-span-4 glass-card rounded-xl p-md flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<h3 class="text-headline-md font-headline-md mb-xs">Engine Status</h3>
+<p class="text-label-sm font-label-sm text-outline-variant">Last run: 2 hours ago</p>
+<div class="mt-lg space-y-md">
+<div class="flex justify-between items-center text-label-md font-label-md">
+<span class="text-outline-variant">Scraping Accuracy</span>
+<span class="text-secondary">98.4%</span>
+</div>
+<div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[98%]" style="box-shadow: 0 0 10px rgba(49, 107, 243, 0.5);"></div>
+</div>
+<div class="flex justify-between items-center text-label-md font-label-md">
+<span class="text-outline-variant">IA CV Match Rate</span>
+<span class="text-primary-container">82%</span>
+</div>
+<div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[82%] shadow-sm"></div>
+</div>
+</div>
+</div>
+<button class="mt-xl w-full py-md bg-secondary text-on-secondary font-bold rounded-lg electric-glow hover:bg-secondary/90 transform active:scale-95 transition-all flex items-center justify-center gap-sm" id="start-btn">
+<span class="material-symbols-outlined">play_arrow</span>
+                        Start Scraper &amp; Automated Postulation
+                    </button>
+<!-- Abstract decorative element -->
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-secondary/20 blur-[60px] rounded-full pointer-events-none"></div>
+</div>
+<!-- Console / Real-time Logs -->
+<div class="col-span-12 console-bg rounded-xl p-md min-h-[300px] flex flex-col font-mono">
+<div class="flex items-center justify-between mb-sm border-b border-outline-variant/10 pb-xs">
+<div class="flex items-center gap-sm">
+<div class="flex gap-xs">
+<div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+</div>
+<span class="text-label-sm font-label-sm text-outline-variant uppercase tracking-widest opacity-60">Engine Logs — pituto-v2.0.4</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="text-[10px] text-green-500/70 uppercase">Socket Connected</span>
+<span class="material-symbols-outlined text-outline-variant text-[18px] cursor-pointer">filter_list</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto space-y-xs text-[13px] leading-relaxed max-h-[350px]" id="log-container">
+<p class="text-outline-variant/60">[09:00:01] <span class="text-secondary">System:</span> Initializing Automation Engine...</p>
+<p class="text-outline-variant/60">[09:00:05] <span class="text-primary-container">Auth:</span> LinkedIn Session Token verified.</p>
+<p class="text-outline-variant/60">[09:00:05] <span class="text-primary-container">Auth:</span> Getonbrd Key verified.</p>
+<p class="text-outline-variant/60">[09:12:44] <span class="text-outline-variant">Crawl4AI:</span> Starting scheduled scrape for 'Senior Product Designer'...</p>
+<p class="text-outline-variant/60">[09:12:50] <span class="text-outline-variant">Crawl4AI:</span> Found 12 new listings on Getonbrd Chile.</p>
+<p class="text-outline-variant/60">[09:13:02] <span class="text-secondary">IA Engine:</span> Analyzing 'Product Lead @ FintechCo'...</p>
+<p class="text-outline-variant/60">[09:13:05] <span class="text-secondary">IA Engine:</span> Match found (92%). Preparing tailored CV &amp; Cover Letter.</p>
+<p class="text-outline-variant/60">[09:13:10] <span class="text-green-500">Automation:</span> Application successfully submitted to FintechCo.</p>
+<p class="text-outline-variant/60">[09:15:00] <span class="text-outline-variant">Status:</span> Engine sleeping for 15 minutes to avoid rate limiting.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        const logs = [
+            { source: 'Crawl4AI', msg: 'Scraping LinkedIn for "Remote LATAM" roles...', color: 'text-outline-variant' },
+            { source: 'IA Engine', msg: 'Matching CV experience with "Architect" requirement...', color: 'text-secondary' },
+            { source: 'Automation', msg: 'Form found: standard easy-apply. Injecting data...', color: 'text-primary-container' },
+            { source: 'Success', msg: 'Applied to Stripe - Senior Frontend Engineer.', color: 'text-green-500' },
+            { source: 'Warning', msg: 'Wellfound login required. Action needed.', color: 'text-yellow-500' },
+            { source: 'IA Engine', msg: 'Optimizing keywords for "Lead Developer" role...', color: 'text-secondary' },
+            { source: 'Crawl4AI', msg: 'Scraped 45 new jobs in Chile.', color: 'text-outline-variant' }
+        ];
+
+        const logContainer = document.getElementById('log-container');
+        const startBtn = document.getElementById('start-btn');
+        let isRunning = false;
+
+        function addLog() {
+            if(!isRunning) return;
+            const log = logs[Math.floor(Math.random() * logs.length)];
+            const time = new Date().toLocaleTimeString([], { hour12: false });
+            const p = document.createElement('p');
+            p.className = 'text-outline-variant/60 animate-in fade-in duration-500 slide-in-from-left-2';
+            p.innerHTML = `[${time}] <span class="${log.color}">${log.source}:</span> ${log.msg}`;
+            logContainer.appendChild(p);
+            logContainer.scrollTop = logContainer.scrollHeight;
+            
+            if (logContainer.children.length > 50) {
+                logContainer.removeChild(logContainer.firstChild);
+            }
+        }
+
+        startBtn.addEventListener('click', () => {
+            isRunning = !isRunning;
+            if (isRunning) {
+                startBtn.innerHTML = `<span class="material-symbols-outlined">stop</span> Stop Engine Now`;
+                startBtn.classList.remove('bg-secondary');
+                startBtn.classList.add('bg-red-600', 'shadow-red-900/40');
+                
+                const initialLog = document.createElement('p');
+                initialLog.className = 'text-secondary font-bold py-xs border-y border-secondary/20';
+                initialLog.innerHTML = `[${new Date().toLocaleTimeString([], { hour12: false })}] System: ENGINE BOOTED - COMMENCING AUTOMATED FLOW...`;
+                logContainer.appendChild(initialLog);
+            } else {
+                startBtn.innerHTML = `<span class="material-symbols-outlined">play_arrow</span> Start Scraper & Automated Postulation`;
+                startBtn.classList.add('bg-secondary');
+                startBtn.classList.remove('bg-red-600', 'shadow-red-900/40');
+                
+                const stopLog = document.createElement('p');
+                stopLog.className = 'text-error font-bold py-xs';
+                stopLog.innerHTML = `[${new Date().toLocaleTimeString([], { hour12: false })}] System: ENGINE HALTED BY USER.`;
+                logContainer.appendChild(stopLog);
+            }
+        });
+
+        setInterval(addLog, 3000);
+    </script>
+</body></html>

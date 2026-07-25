@@ -1,0 +1,748 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Pituto-AI - Profile Calibration</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-background": "#131b2e",
+              "on-secondary-container": "#fefcff",
+              "on-tertiary-container": "#fffbff",
+              primary: "#6b38d4",
+              "on-surface": "#131b2e",
+              "on-primary": "#ffffff",
+              "tertiary-fixed": "#ffdcbb",
+              "surface-container-highest": "#dae2fd",
+              "on-secondary-fixed-variant": "#003ea8",
+              "secondary-container": "#316bf3",
+              "on-tertiary-fixed": "#2c1700",
+              "on-tertiary": "#ffffff",
+              "surface-container": "#eaedff",
+              "surface-bright": "#faf8ff",
+              "on-error": "#ffffff",
+              background: "#faf8ff",
+              "secondary-fixed": "#dbe1ff",
+              "on-surface-variant": "#494454",
+              "error-container": "#ffdad6",
+              "surface-tint": "#6d3bd7",
+              "inverse-primary": "#d0bcff",
+              "on-secondary-fixed": "#00174b",
+              "surface-container-low": "#f2f3ff",
+              "on-primary-fixed-variant": "#5516be",
+              "tertiary-container": "#a76500",
+              surface: "#faf8ff",
+              "surface-container-high": "#e2e7ff",
+              "inverse-on-surface": "#eef0ff",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#dae2fd",
+              "primary-container": "#8455ef",
+              "primary-fixed": "#e9ddff",
+              "surface-dim": "#d2d9f4",
+              "on-tertiary-fixed-variant": "#673d00",
+              "primary-fixed-dim": "#d0bcff",
+              "on-error-container": "#93000a",
+              secondary:
+                "#2563eb" /* Electric Blue Override per user request */,
+              outline: "#7b7486",
+              "inverse-surface": "#283044",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#23005c",
+              error: "#ba1a1a",
+              "tertiary-fixed-dim": "#ffb869",
+              "secondary-fixed-dim": "#b4c5ff",
+              "outline-variant": "#cbc3d7",
+              tertiary: "#855000",
+              "on-primary-container": "#fffbff",
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem",
+            },
+            spacing: {
+              gutter: "24px",
+              "container-max": "1200px",
+              xl: "80px",
+              md: "24px",
+              xs: "8px",
+              lg: "48px",
+              base: "4px",
+              sm: "16px",
+            },
+            fontFamily: {
+              "label-md": ["Geist"],
+              "body-sm": ["Inter"],
+              "body-lg": ["Inter"],
+              "headline-lg": ["Inter"],
+              display: ["Inter"],
+              "body-md": ["Inter"],
+              "label-sm": ["Geist"],
+              "headline-md": ["Inter"],
+            },
+            fontSize: {
+              "label-md": [
+                "14px",
+                { lineHeight: "1", letterSpacing: "0.02em", fontWeight: "500" },
+              ],
+              "body-sm": ["14px", { lineHeight: "1.5", fontWeight: "400" }],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-lg": [
+                "32px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "600",
+                },
+              ],
+              display: [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+              "label-sm": [
+                "12px",
+                { lineHeight: "1", letterSpacing: "0.05em", fontWeight: "500" },
+              ],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+      }
+      .ai-pulse {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+        }
+      }
+      .bg-grid-slate {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(203 211 241 / 0.1)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
+      }
+    </style>
+  </head>
+  <body class="bg-background text-on-background font-body-md min-h-screen">
+    <!-- Sidebar Navigation -->
+    <nav
+      class="fixed left-0 top-0 h-screen w-64 bg-on-background flex flex-col py-lg px-md z-50 border-r border-outline-variant shadow-sm"
+    >
+      <div class="mb-xl">
+        <h1 class="text-headline-md font-headline-md font-bold text-primary">
+          Pituto-AI
+        </h1>
+        <p class="text-label-sm text-outline-variant">Executive Automation</p>
+      </div>
+      <div class="flex-1 space-y-xs">
+        <a
+          class="flex items-center gap-sm px-md py-sm rounded-lg text-primary font-bold border-r-2 border-primary bg-surface-container-highest transition-colors duration-150"
+          href="index.html"
+        >
+          <span class="material-symbols-outlined">account_circle</span>
+          <span class="text-label-md font-label-md">Profile</span>
+        </a>
+        <a
+          class="flex items-center gap-sm px-md py-sm rounded-lg text-outline-variant hover:bg-inverse-surface transition-colors duration-150"
+          href="recomendaciones-mercado.html"
+        >
+          <span class="material-symbols-outlined">psychology</span>
+          <span class="text-label-md font-label-md">AI Recommendations</span>
+        </a>
+        <a
+          class="flex items-center gap-sm px-md py-sm rounded-lg text-outline-variant hover:bg-inverse-surface transition-colors duration-150"
+          href="fabrica-cv-optimizado.html"
+        >
+          <span class="material-symbols-outlined">edit_note</span>
+          <span class="text-label-md font-label-md">CV Builder</span>
+        </a>
+        <a
+          class="flex items-center gap-sm px-md py-sm rounded-lg text-outline-variant hover:bg-inverse-surface transition-colors duration-150"
+          href="motor-automatizacion.html"
+        >
+          <span class="material-symbols-outlined">bolt</span>
+          <span class="text-label-md font-label-md">Automation Engine</span>
+        </a>
+        <a
+          class="flex items-center gap-sm px-md py-sm rounded-lg text-outline-variant hover:bg-inverse-surface transition-colors duration-150"
+          href="historial-aplicaciones.html"
+        >
+          <span class="material-symbols-outlined">history</span>
+          <span class="text-label-md font-label-md">History</span>
+        </a>
+        <a
+          class="flex items-center gap-sm px-md py-sm rounded-lg text-outline-variant hover:bg-inverse-surface transition-colors duration-150"
+          href="configuracion.html"
+        >
+          <span class="material-symbols-outlined">settings</span>
+          <span class="text-label-md font-label-md">Settings</span>
+        </a>
+      </div>
+      <div class="mt-auto">
+        <button
+          class="w-full bg-primary text-on-primary py-sm rounded-full font-label-md hover:opacity-90 transition-opacity"
+          onclick="window.location.href = 'index.html'"
+        >
+          New Application
+        </button>
+      </div>
+    </nav>
+    <!-- Top App Bar -->
+    <header
+      class="fixed top-0 right-0 left-64 flex justify-between items-center px-lg h-16 bg-surface border-b border-outline-variant z-40"
+    >
+      <div class="flex items-center">
+        <h2 class="text-headline-md font-headline-md">Profile Calibration</h2>
+      </div>
+      <div class="flex items-center gap-md">
+        <div class="relative group">
+          <span
+            class="material-symbols-outlined text-on-surface-variant cursor-pointer group-hover:text-primary transition-colors"
+            >notifications</span
+          >
+          <div
+            class="absolute -top-1 -right-1 w-2 h-2 bg-secondary rounded-full"
+          ></div>
+        </div>
+        <span
+          class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors"
+          >help_outline</span
+        >
+        <div
+          class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-bold"
+        >
+          <img
+            class="w-full h-full rounded-full object-cover"
+            data-alt="A professional headshot of a tech executive in a clean, high-key studio environment. The subject wears a charcoal suit and a confident expression. Soft, diffused lighting creates a premium, high-end corporate aesthetic consistent with minimalist SaaS branding."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuADwikABECDZDVJ25Egpb_i3v5oncFof8-iZJUaLL0mq4wYlGd6r8b6f9UZ2tQ7ltec6j0wJig8zla3ErwMunTjogHmyersX1lbLPZPniUpmQcHz4S7voCBYknw15cAm9RxoSktG8-7jam_XMdqNnU2z_EglSphMe2cYYA1LSiGCCZrBcbbZ36YraRv3Xrcadrh2Qny1Io_pw5gvVTbGkO8Y5-2G1lq5rOEg-WQCMmqHX7U11FEbap9R4lXHqHcqALOa_PzhsBUiw"
+          />
+        </div>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main class="ml-64 pt-24 px-lg pb-xl bg-grid-slate relative">
+      <div class="max-w-[1200px] mx-auto">
+        <div class="grid grid-cols-12 gap-gutter">
+          <!-- Left Column: Personal Data & Intent -->
+          <div class="col-span-12 lg:col-span-7 space-y-gutter">
+            <section class="glass-card p-lg rounded-xl">
+              <div class="flex items-center gap-sm mb-lg">
+                <div
+                  class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-secondary"
+                    >person</span
+                  >
+                </div>
+                <div>
+                  <h3 class="text-headline-md font-headline-md">
+                    Identity Details
+                  </h3>
+                  <p class="text-body-sm text-outline">
+                    Tell us who you are in the tech ecosystem.
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-md">
+                <div class="space-y-xs">
+                  <label class="text-label-sm font-label-md text-on-surface"
+                    >First Name</label
+                  >
+                  <input
+                    class="w-full bg-white border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
+                    placeholder="e.g. Alex"
+                    type="text"
+                  />
+                </div>
+                <div class="space-y-xs">
+                  <label class="text-label-sm font-label-md text-on-surface"
+                    >Last Name</label
+                  >
+                  <input
+                    class="w-full bg-white border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
+                    placeholder="e.g. Rivera"
+                    type="text"
+                  />
+                </div>
+                <div class="col-span-2 space-y-xs">
+                  <label class="text-label-sm font-label-md text-on-surface"
+                    >Nationality</label
+                  >
+                  <select
+                    class="w-full bg-white border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all appearance-none"
+                  >
+                    <option>Select your nationality...</option>
+                    <option>Chilean</option>
+                    <option>Argentinian</option>
+                    <option>Mexican</option>
+                    <option>Colombian</option>
+                    <option>Peruvian</option>
+                    <option>Spanish</option>
+                    <option>American</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="col-span-2 space-y-xs">
+                  <label class="text-label-sm font-label-md text-on-surface"
+                    >Portfolio / GitHub Link</label
+                  >
+                  <div class="relative">
+                    <span
+                      class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline-variant text-[20px]"
+                      >link</span
+                    >
+                    <input
+                      class="w-full bg-white border border-outline-variant rounded-lg pl-xl pr-md py-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
+                      placeholder="https://github.com/alexrivera"
+                      type="url"
+                    />
+                  </div>
+                </div>
+                <div class="col-span-2 space-y-xs">
+                  <label class="text-label-sm font-label-md text-on-surface"
+                    >LinkedIn Profile</label
+                  >
+                  <div class="relative">
+                    <span
+                      class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline-variant text-[20px]"
+                      >badge</span
+                    >
+                    <input
+                      class="w-full bg-white border border-outline-variant rounded-lg pl-xl pr-md py-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
+                      placeholder="https://linkedin.com/in/alexrivera"
+                      type="url"
+                    />
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="glass-card p-lg rounded-xl">
+              <div class="flex items-center gap-sm mb-lg">
+                <div
+                  class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-secondary"
+                    >target</span
+                  >
+                </div>
+                <div>
+                  <h3 class="text-headline-md font-headline-md">
+                    Career Target
+                  </h3>
+                  <p class="text-body-sm text-outline">
+                    Define your next professional milestone.
+                  </p>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-md">
+                <div class="space-y-xs">
+                  <label class="text-label-sm font-label-md text-on-surface"
+                    >Desired IT Role</label
+                  >
+                  <select
+                    class="w-full bg-white border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all appearance-none"
+                  >
+                    <option>Select a role...</option>
+                    <option>Junior Python Backend</option>
+                    <option>Frontend React Engineer</option>
+                    <option>SRE / DevOps Specialist</option>
+                    <option>Data Scientist</option>
+                    <option>Fullstack TypeScript Developer</option>
+                  </select>
+                </div>
+                <div class="space-y-xs">
+                  <label class="text-label-sm font-label-md text-on-surface"
+                    >Salary Aspiration (USD/yr)</label
+                  >
+                  <input
+                    class="w-full bg-white border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
+                    placeholder="e.g. 120,000"
+                    type="number"
+                  />
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- Right Column: CV Upload & AI Calibration -->
+          <div class="col-span-12 lg:col-span-5 space-y-gutter">
+            <section
+              class="bg-white p-lg rounded-xl border border-outline-variant h-full flex flex-col"
+            >
+              <div class="flex items-center gap-sm mb-lg">
+                <div
+                  class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-primary"
+                    >cloud_upload</span
+                  >
+                </div>
+                <div>
+                  <h3 class="text-headline-md font-headline-md">
+                    CV Architecture
+                  </h3>
+                  <p class="text-body-sm text-outline">
+                    Upload your experience for AI parsing.
+                  </p>
+                </div>
+              </div>
+              <!-- Drag and Drop Zone -->
+              <div
+                class="flex-1 border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center p-lg cursor-pointer hover:bg-surface-container-low transition-colors group"
+                id="drop-zone"
+              >
+                <div
+                  class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center mb-md group-hover:scale-110 transition-transform"
+                >
+                  <span
+                    class="material-symbols-outlined text-primary text-[32px]"
+                    >description</span
+                  >
+                </div>
+                <p
+                  class="text-label-md font-label-md text-on-surface text-center"
+                >
+                  Drop your PDF here or
+                  <span class="text-secondary underline">browse</span>
+                </p>
+                <p class="text-label-sm text-outline mt-xs">Max size: 5MB</p>
+                <input
+                  accept=".pdf"
+                  class="hidden"
+                  id="cv-upload"
+                  type="file"
+                />
+              </div>
+              <!-- AI Analysis Widget -->
+              <div class="mt-lg pt-lg border-t border-outline-variant">
+                <div class="flex justify-between items-end mb-xs">
+                  <label
+                    class="text-label-sm font-label-md text-on-surface uppercase tracking-wider"
+                    >AI Calibration Status</label
+                  >
+                  <span
+                    class="text-label-sm font-label-md text-secondary"
+                    id="progress-text"
+                    >Ready to analyze</span
+                  >
+                </div>
+                <div
+                  class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden"
+                >
+                  <div
+                    class="h-full bg-secondary w-0 transition-all duration-1000 ease-out"
+                    id="progress-bar"
+                  ></div>
+                </div>
+                <div
+                  class="mt-md flex justify-center opacity-0 transition-opacity duration-500"
+                  id="badge-container"
+                >
+                  <div
+                    class="ai-pulse bg-secondary/10 border border-secondary/30 px-md py-xs rounded-full flex items-center gap-xs"
+                  >
+                    <span
+                      class="material-symbols-outlined text-secondary text-[18px]"
+                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      >verified</span
+                    >
+                    <span class="text-label-sm font-label-md text-secondary"
+                      >Profile Calibrated for IT</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <!-- Profile Summary Bento Segment -->
+        <div class="mt-gutter grid grid-cols-12 gap-gutter">
+        
+          <!-- Role Target Bar -->
+          <div
+            class="col-span-12 glass-card rounded-xl p-lg flex flex-col md:flex-row items-center justify-between gap-md"
+          >
+            <div class="flex items-center gap-md">
+              <div
+                class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0"
+              >
+                <span class="material-symbols-outlined text-secondary"
+                  >work</span
+                >
+              </div>
+              <div>
+                <h4 class="text-headline-md font-headline-md">Role Target</h4>
+                <p class="text-body-md text-outline-variant">
+                  Filter the type of roles to pursue.
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex flex-col sm:flex-row items-center gap-md w-full md:w-auto"
+            >
+              <div
+                class="flex flex-wrap gap-xs justify-center"
+                id="work-mode-toggles"
+              >
+                <button
+                  class="role-toggle active px-md py-xs rounded-full border font-label-md text-label-sm transition-all bg-primary text-on-primary border-primary"
+                  onclick="toggleWorkMode(this)"
+                  type="button"
+                >
+                  Remote
+                </button>
+                <button
+                  class="role-toggle px-md py-xs rounded-full border font-label-md text-label-sm transition-all bg-white text-on-surface-variant border-outline-variant hover:border-primary/50"
+                  onclick="toggleWorkMode(this)"
+                  type="button"
+                >
+                  Onsite
+                </button>
+                <button
+                  class="role-toggle px-md py-xs rounded-full border font-label-md text-label-sm transition-all bg-white text-on-surface-variant border-outline-variant hover:border-primary/50"
+                  onclick="toggleWorkMode(this)"
+                  type="button"
+                >
+                  Hybrid
+                </button>
+              </div>
+              <select
+                class="w-full sm:w-56 bg-white border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all appearance-none"
+              >
+                <option>Select experience level...</option>
+                <option>Entry Level / Junior (0-2 yrs)</option>
+                <option>Mid-Level (2-5 yrs)</option>
+                <option>Senior (5-8 yrs)</option>
+                <option>Lead / Staff (8+ yrs)</option>
+              </select>
+            </div>
+          </div>
+          <!-- Market Target Bar -->
+          <div
+            class="col-span-12 glass-card rounded-xl p-lg flex flex-col md:flex-row items-center justify-between gap-md"
+          >
+            <div class="flex items-center gap-md">
+              <div
+                class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0"
+              >
+                <span class="material-symbols-outlined text-secondary"
+                  >public</span
+                >
+              </div>
+              <div>
+                <h4 class="text-headline-md font-headline-md">Market Target</h4>
+                <p class="text-body-md text-outline-variant">
+                  Countries or regions to search.
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex flex-col sm:flex-row items-center gap-sm w-full md:w-auto"
+            >
+              <div
+                class="flex flex-wrap gap-xs justify-center"
+                id="market-target-chips"
+              >
+                <div
+                  class="market-chip px-sm py-xs bg-primary/10 text-primary border border-primary/20 rounded-full flex items-center gap-xs"
+                >
+                  <span class="text-label-sm font-label-sm">Chile</span>
+                  <span
+                    class="material-symbols-outlined text-[14px] cursor-pointer"
+                    onclick="removeMarketTarget(this)"
+                    >close</span
+                  >
+                </div>
+                <div
+                  class="market-chip px-sm py-xs bg-primary/10 text-primary border border-primary/20 rounded-full flex items-center gap-xs"
+                >
+                  <span class="text-label-sm font-label-sm">Remote LATAM</span>
+                  <span
+                    class="material-symbols-outlined text-[14px] cursor-pointer"
+                    onclick="removeMarketTarget(this)"
+                    >close</span
+                  >
+                </div>
+              </div>
+              <div class="flex gap-xs w-full sm:w-auto">
+                <input
+                  class="flex-1 sm:w-48 bg-white border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
+                  id="market-target-input"
+                  placeholder="e.g. Spain, Remote EU..."
+                  type="text"
+                />
+                <button
+                  class="px-md py-sm bg-secondary text-on-secondary rounded-lg font-label-md hover:opacity-90 transition-opacity flex items-center gap-xs shrink-0"
+                  onclick="addMarketTarget()"
+                >
+                  <span class="material-symbols-outlined text-[18px]">add</span>
+                  Add
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-span-12 glass-card rounded-xl p-lg flex flex-col md:flex-row items-center justify-between gap-md"
+          >
+            <div class="flex items-center gap-md">
+              <div
+                class="w-16 h-16 rounded-full overflow-hidden border-2 border-secondary p-xs"
+              >
+                <img
+                  class="w-full h-full rounded-full object-cover"
+                  data-alt="A stylized technical 3D icon of a glowing robotic eye with violet and blue light trails, representing artificial intelligence and data scanning. The object is rendered with high precision in a minimalist, clean environment with soft shadows and a premium tech aesthetic."
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAISmRwJKdr_KqDc134q_Z-7xURCYVOOJptMMHS99bHKAtj4U7SRF2cti_Z-GE_B54PjwLpZSyBp3GYjxW91x9hWx1syyGJIRdVCiCAHO3TFZ_kf_KP6Z7fY9ec7pwL7Ch0pZ2KVMPvKmwhPVNmSyt42bGtx6Xek8gP8wd2AcaBxOnUmJ97whYhrFivvwI39DlIf4YV5OWukDDN27HXoGiYffM-22RtUNFs0Fh31_Mt2PLMB-2dR3f3v679K8iB5qbqNselfEP7kg"
+                />
+              </div>
+              <div>
+                <h4 class="text-headline-md font-headline-md">
+                  Optimization Engine
+                </h4>
+                <p class="text-body-md text-outline-variant">
+                  Your profile is currently 15% complete. Upload your CV to
+                  reach 100%.
+                </p>
+              </div>
+            </div>
+            <button
+              class="bg-on-background text-on-primary px-lg py-sm rounded-full font-label-md hover:bg-primary transition-all"
+              onclick="window.location.href = 'recomendaciones-mercado.html'"
+            >
+              Finalize Calibration
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      const marketTargetInput = document.getElementById("market-target-input");
+      const marketTargetChips = document.getElementById("market-target-chips");
+
+      function addMarketTarget() {
+        const value = marketTargetInput.value.trim();
+        if (!value) return;
+
+        const chip = document.createElement("div");
+        chip.className =
+          "market-chip px-sm py-xs bg-primary/10 text-primary border border-primary/20 rounded-full flex items-center gap-xs";
+        chip.innerHTML = `<span class="text-label-sm font-label-sm">${value}</span><span class="material-symbols-outlined text-[14px] cursor-pointer" onclick="removeMarketTarget(this)">close</span>`;
+        marketTargetChips.appendChild(chip);
+
+        marketTargetInput.value = "";
+        marketTargetInput.focus();
+      }
+
+      function removeMarketTarget(closeIcon) {
+        closeIcon.closest(".market-chip").remove();
+      }
+
+      marketTargetInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          addMarketTarget();
+        }
+      });
+
+      function toggleWorkMode(btn) {
+        btn.classList.toggle("active");
+        const isActive = btn.classList.contains("active");
+        btn.classList.toggle("bg-primary", isActive);
+        btn.classList.toggle("text-on-primary", isActive);
+        btn.classList.toggle("border-primary", isActive);
+        btn.classList.toggle("bg-white", !isActive);
+        btn.classList.toggle("text-on-surface-variant", !isActive);
+        btn.classList.toggle("border-outline-variant", !isActive);
+      }
+
+      const dropZone = document.getElementById("drop-zone");
+      const progressBar = document.getElementById("progress-bar");
+      const progressText = document.getElementById("progress-text");
+      const badgeContainer = document.getElementById("badge-container");
+      const fileInput = document.getElementById("cv-upload");
+
+      dropZone.addEventListener("click", () => fileInput.click());
+
+      dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropZone.classList.add("bg-secondary/5", "border-secondary");
+      });
+
+      dropZone.addEventListener("dragleave", () => {
+        dropZone.classList.remove("bg-secondary/5", "border-secondary");
+      });
+
+      dropZone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropZone.classList.remove("bg-secondary/5", "border-secondary");
+        startAnalysis();
+      });
+
+      fileInput.addEventListener("change", () => {
+        if (fileInput.files.length > 0) startAnalysis();
+      });
+
+      function startAnalysis() {
+        let progress = 0;
+        progressText.innerText = "Analyzing CV...";
+        progressBar.style.width = "0%";
+        badgeContainer.classList.add("opacity-0");
+
+        const interval = setInterval(() => {
+          progress += Math.random() * 30;
+          if (progress > 100) {
+            progress = 100;
+            clearInterval(interval);
+            completeAnalysis();
+          }
+          progressBar.style.width = progress + "%";
+        }, 400);
+      }
+
+      function completeAnalysis() {
+        progressText.innerText = "Calibration Complete";
+        progressText.classList.add("text-primary");
+        badgeContainer.classList.remove("opacity-0");
+        badgeContainer.classList.add("animate-bounce");
+        setTimeout(
+          () => badgeContainer.classList.remove("animate-bounce"),
+          1000,
+        );
+      }
+    </script>
+  </body>
+</html>

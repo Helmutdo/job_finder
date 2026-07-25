@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pituto-AI | Application History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#131b2e",
+                        "on-secondary-container": "#fefcff",
+                        "on-tertiary-container": "#fffbff",
+                        "primary": "#6b38d4",
+                        "on-surface": "#131b2e",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdcbb",
+                        "surface-container-highest": "#dae2fd",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "secondary-container": "#316bf3",
+                        "on-tertiary-fixed": "#2c1700",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#eaedff",
+                        "surface-bright": "#faf8ff",
+                        "on-error": "#ffffff",
+                        "background": "#faf8ff",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-surface-variant": "#494454",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#6d3bd7",
+                        "inverse-primary": "#d0bcff",
+                        "on-secondary-fixed": "#00174b",
+                        "surface-container-low": "#f2f3ff",
+                        "on-primary-fixed-variant": "#5516be",
+                        "tertiary-container": "#a76500",
+                        "surface": "#faf8ff",
+                        "surface-container-high": "#e2e7ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#dae2fd",
+                        "primary-container": "#8455ef",
+                        "primary-fixed": "#e9ddff",
+                        "surface-dim": "#d2d9f4",
+                        "on-tertiary-fixed-variant": "#673d00",
+                        "primary-fixed-dim": "#d0bcff",
+                        "on-error-container": "#93000a",
+                        "secondary": "#0051d5",
+                        "outline": "#7b7486",
+                        "inverse-surface": "#283044",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#23005c",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb869",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "outline-variant": "#cbc3d7",
+                        "tertiary": "#855000",
+                        "on-primary-container": "#fffbff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "xs": "8px",
+                        "lg": "48px",
+                        "base": "4px",
+                        "sm": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Geist"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0f172a; /* Custom dark deep background */
+            color: #f8fafc;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sheet-closed { transform: translateX(100%); }
+        .sheet-open { transform: translateX(0); }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-screen flex flex-col py-lg px-md w-64 bg-on-background border-r border-outline-variant z-50">
+<div class="mb-lg px-xs">
+<h1 class="text-headline-md font-headline-md font-bold text-inverse-primary">Pituto-AI</h1>
+<p class="text-label-sm font-label-sm text-outline-variant uppercase tracking-widest mt-base">Executive Automation</p>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-inverse-surface transition-colors duration-150" href="index.html">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-inverse-surface transition-colors duration-150" href="recomendaciones-mercado.html">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-md text-label-md">AI Recommendations</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-inverse-surface transition-colors duration-150" href="fabrica-cv-optimizado.html">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="font-label-md text-label-md">CV Builder</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-inverse-surface transition-colors duration-150" href="motor-automatizacion.html">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+<span class="font-label-md text-label-md">Automation Engine</span>
+</a>
+<!-- History is Active -->
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-inverse-primary font-bold border-r-2 border-primary bg-inverse-surface transition-colors duration-150" href="historial-aplicaciones.html">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-md text-label-md">History</span>
+</a>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-inverse-surface transition-colors duration-150" href="configuracion.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-lg border-t border-outline-variant/20">
+<button class="w-full bg-primary hover:bg-primary-container text-white font-label-md text-label-md py-sm px-md rounded-xl flex items-center justify-center gap-xs transition-all active:scale-95" onclick="window.location.href='index.html'">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                New Application
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen flex flex-col bg-slate-950 relative overflow-hidden">
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 left-64 flex justify-between items-center px-lg h-16 z-40 bg-slate-900/50 backdrop-blur-md border-b border-outline-variant/10">
+<div class="flex items-center gap-md">
+<h2 class="text-headline-md font-headline-md text-inverse-primary">Postulation History</h2>
+<div class="h-4 w-[1px] bg-outline-variant/30"></div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="text-label-md font-label-md">Total Applications:</span>
+<span class="text-primary font-bold">128</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant" data-icon="search">search</span>
+<input class="bg-slate-800/50 border border-outline-variant/20 rounded-full pl-10 pr-md py-xs text-label-md font-label-md w-64 focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all outline-none" placeholder="Search company or position..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-primary/20">
+<img class="w-full h-full object-cover" data-alt="Close up professional portrait of a tech executive in high-end office lighting, cinematic blur background, cool color tones, professional headshot style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXjwbCghc-tRLWazuNvsLaNgQ9FfPAFMee760IhZH15t2xCU6NaMcGg362NXszQR3KaFulWgClGZU7fipaHNFzwc1XzFkgsNMT0uQm-XX1PQ7eVT_qjaX3D1Wc2JYTC1s4kVFXAbcEpuiWfINhNtUeP-qzmTynklubbe4UP2YyT7KzBMe8ouZLPuwvav4GH7VD13gfGBfqQER6dyBk1Tog3OQ_v2228eTrJoOtdqufh5Am4z_Ha2oncjEN_9UTdkY8pmK0LNyj8Q"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="mt-16 p-lg flex-1 overflow-y-auto">
+<!-- Stats Overview - Bento Style -->
+<div class="grid grid-cols-4 gap-md mb-lg">
+<div class="glass-card p-md rounded-xl flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-outline-variant uppercase">Success Rate</span>
+<span class="text-headline-md font-headline-md text-secondary">12.4%</span>
+<div class="h-1 bg-slate-800 rounded-full overflow-hidden mt-xs">
+<div class="h-full bg-secondary w-[12.4%]"></div>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-outline-variant uppercase">Active Interviews</span>
+<span class="text-headline-md font-headline-md text-tertiary-fixed-dim">8</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">+2 this week</span>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-outline-variant uppercase">AI Match Avg</span>
+<span class="text-headline-md font-headline-md text-primary-fixed-dim">94%</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Top 5% of candidates</span>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col gap-xs">
+<span class="text-label-sm font-label-sm text-outline-variant uppercase">Time to Offer</span>
+<span class="text-headline-md font-headline-md text-on-secondary-container">14 Days</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Market avg: 42 days</span>
+</div>
+</div>
+<!-- Main Data Table Container -->
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="p-md border-b border-outline-variant/10 flex justify-between items-center bg-slate-900/30">
+<h3 class="font-headline-md text-label-md font-bold">Recent Activities</h3>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-sm py-xs bg-slate-800/50 hover:bg-slate-700/50 rounded-lg text-label-sm font-label-sm transition-colors border border-outline-variant/20">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+                            Filter
+                        </button>
+<button class="flex items-center gap-xs px-sm py-xs bg-slate-800/50 hover:bg-slate-700/50 rounded-lg text-label-sm font-label-sm transition-colors border border-outline-variant/20">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                            Export
+                        </button>
+</div>
+</div>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-900/50 text-outline-variant border-b border-outline-variant/10">
+<th class="px-md py-sm font-label-md text-label-sm uppercase tracking-wider">Company</th>
+<th class="px-md py-sm font-label-md text-label-sm uppercase tracking-wider">Position</th>
+<th class="px-md py-sm font-label-md text-label-sm uppercase tracking-wider">Platform</th>
+<th class="px-md py-sm font-label-md text-label-sm uppercase tracking-wider">Date</th>
+<th class="px-md py-sm font-label-md text-label-sm uppercase tracking-wider">Status</th>
+<th class="px-md py-sm font-label-md text-label-sm uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1: Interview -->
+<tr class="hover:bg-primary/5 cursor-pointer transition-colors group" onclick="openSheet('OpenAI', 'Senior AI Engineer', 'LinkedIn', 'Oct 24, 2023', 'Interview')">
+<td class="px-md py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-white flex items-center justify-center p-1">
+<img class="w-full h-full object-contain" data-alt="Minimalist geometric logo for a cutting edge artificial intelligence company, vector style, flat design, monochrome." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSqZoaRt7-vwZErmV9TCnngwCaodxc75PUEv6BO7pReOBIaovY-yi6losu1IidiNigv-zUVRKjNv4NHOed3iNy24Wlo3uLfmSJXDaAX1gSzG88vzFhPFvWaSYy-BlBR61vxuGWMC2RJry-ts8F9ILT_V3unl-acKpBvwFM26xN2lLBNCEE3ZM0EwPtHzflM4dr5A_3ABgpby9V_4DKySPeKvW0PQbu02VFX7vsanpqMagjx0O4Zq0WWhDTtUB45ifSD5MKoVM6dg"/>
+</div>
+<span class="font-bold">OpenAI</span>
+</div>
+</td>
+<td class="px-md py-md font-medium text-inverse-primary">Senior AI Engineer</td>
+<td class="px-md py-md text-on-surface-variant">LinkedIn</td>
+<td class="px-md py-md text-on-surface-variant">Oct 24, 2023</td>
+<td class="px-md py-md">
+<span class="px-sm py-1 rounded-full text-label-sm font-label-sm bg-tertiary-container/20 text-tertiary-fixed-dim border border-tertiary-container/30">Interview</span>
+</td>
+<td class="px-md py-md text-right">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+<!-- Row 2: Offer -->
+<tr class="hover:bg-primary/5 cursor-pointer transition-colors group" onclick="openSheet('Stripe', 'Principal Frontend', 'Wellfound', 'Oct 22, 2023', 'Offer')">
+<td class="px-md py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-white flex items-center justify-center p-1">
+<img class="w-full h-full object-contain" data-alt="Clean corporate logo for a global fintech giant, minimalist line art, professional blue and slate tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoTxbBIkG6qOE5pniFTSEAQslpF4qws-dFnwryCHoxf4WC8RRH43H27I1JB_tcx94ijTkRyGTCanNCVI_ik3fU1XGng6S0Jxut97HKgqWs3CX6bUUnDXniVUVc_OJkLuqmoliZF10b5xsnleXCE9UCwbad8xqQmTlZVngu7jiys--uqtOEg9A0f7LbNKAOl0j1q3HlKWnsSNw3ThCr2YYO0GMzJDu7jnv94PHNf4dSskf0PPmSD861fwn6LPEwQuJ-L33OPML6hA"/>
+</div>
+<span class="font-bold">Stripe</span>
+</div>
+</td>
+<td class="px-md py-md font-medium text-inverse-primary">Principal Frontend</td>
+<td class="px-md py-md text-on-surface-variant">Wellfound</td>
+<td class="px-md py-md text-on-surface-variant">Oct 22, 2023</td>
+<td class="px-md py-md">
+<span class="px-sm py-1 rounded-full text-label-sm font-label-sm bg-green-500/20 text-green-400 border border-green-500/30">Offer</span>
+</td>
+<td class="px-md py-md text-right">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+<!-- Row 3: Auto-applied -->
+<tr class="hover:bg-primary/5 cursor-pointer transition-colors group" onclick="openSheet('Anthropic', 'Research Lead', 'LinkedIn', 'Oct 20, 2023', 'Auto-applied')">
+<td class="px-md py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-slate-800 flex items-center justify-center p-1">
+<img class="w-full h-full object-contain" data-alt="Abstract modern logo for a deep tech research firm, organic shapes, sophisticated earthy tones, high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6Rd19QvLQqSmvlnrfMH8o930nYDNBypjpnmd1pm6_P--E62AuWRKhKvOSBvnov9CHK0iKICe6-TosX1Gnqj3jdCYtXPtjcP_0qlkaJD3w1DOK61UN8GsW1VpOTofnfjaUVOQx19CfYT7wDdWSqH4fhWONJRdcHIJyFPJ0oik9q_lSU-h5stabZZIATaC-SvC7LEWP4xtYjdVscDZfipTRB0qcj4-Fr0fFYxGtVOTBIagXknVDNYlGl26NVMq4LXOz-bRkfNykKQ"/>
+</div>
+<span class="font-bold">Anthropic</span>
+</div>
+</td>
+<td class="px-md py-md font-medium text-inverse-primary">Research Lead</td>
+<td class="px-md py-md text-on-surface-variant">LinkedIn</td>
+<td class="px-md py-md text-on-surface-variant">Oct 20, 2023</td>
+<td class="px-md py-md">
+<span class="px-sm py-1 rounded-full text-label-sm font-label-sm bg-primary/20 text-primary-fixed-dim border border-primary/30">Auto-applied</span>
+</td>
+<td class="px-md py-md text-right">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+<!-- Row 4: Rejected -->
+<tr class="hover:bg-primary/5 cursor-pointer transition-colors group" onclick="openSheet('Netflix', 'Solutions Architect', 'Getonbrd', 'Oct 18, 2023', 'Rejected')">
+<td class="px-md py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-black flex items-center justify-center p-1 border border-white/10">
+<img class="w-full h-full object-contain" data-alt="Iconic bold red letter logo on black background for a global entertainment brand, sleek and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG_tekaIjKfpUAcOsEbo7Zj2mc0jF3ftIwV_KVhe08QNK3r1UWXDL2qYnXAzRvZwWmDHjBoC1LcjGZs0l9Dm2aSvzqUTLc6WXJ6qCvUckImXjBPUdKswXe8kreQcE5NlwYhNez8PWHtMbvCO55gkMCBAlAcRtOo2ZyrMBBduR8RzRe2FOojLYEDCuaEPHyUSYi3qzuI-rPXUO01gqF5VOe_YvgdOeXQFN5iY2_gNhkhfiFWBqodjz_lObuRykWFkK8t20c15z6mQ"/>
+</div>
+<span class="font-bold">Netflix</span>
+</div>
+</td>
+<td class="px-md py-md font-medium text-inverse-primary">Solutions Architect</td>
+<td class="px-md py-md text-on-surface-variant">Getonbrd</td>
+<td class="px-md py-md text-on-surface-variant">Oct 18, 2023</td>
+<td class="px-md py-md">
+<span class="px-sm py-1 rounded-full text-label-sm font-label-sm bg-error/20 text-error-container border border-error/30">Rejected</span>
+</td>
+<td class="px-md py-md text-right">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+<!-- Row 5: Discovered -->
+<tr class="hover:bg-primary/5 cursor-pointer transition-colors group" onclick="openSheet('Linear', 'Staff Designer', 'Wellfound', 'Oct 15, 2023', 'Discovered')">
+<td class="px-md py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-white flex items-center justify-center p-1">
+<img class="w-full h-full object-contain" data-alt="Monogram logo for a productivity software company, ultra-minimalist, black and white, precision typography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuBNcsTFzgtIqij3lBhQ8Nr2_4bU3N06dMJ97ESQ0Z196A1z1FAJ_nvVD6AjFeJofpL7YG_Gf5hOxZEFkZ1-fPW8QniMTLZp6nrRGT2iTHYcO0nDJaYVVh1FwozWi-nog-dNzyTV35ume2lw5hmUOoP-2Td13fImCXzVthJGWRTWdisSCw-rqU2yLjLa3jKAypcqYCBjdakzL-puoWM60tPbwd77cxXoaOAHMivJbRTgbxkJ-s_3wbjo2mtR8xEcg1zL0pcLE82w"/>
+</div>
+<span class="font-bold">Linear</span>
+</div>
+</td>
+<td class="px-md py-md font-medium text-inverse-primary">Staff Designer</td>
+<td class="px-md py-md text-on-surface-variant">Wellfound</td>
+<td class="px-md py-md text-on-surface-variant">Oct 15, 2023</td>
+<td class="px-md py-md">
+<span class="px-sm py-1 rounded-full text-label-sm font-label-sm bg-slate-700/50 text-outline-variant border border-outline-variant/20">Discovered</span>
+</td>
+<td class="px-md py-md text-right">
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="p-md flex justify-between items-center text-label-sm font-label-sm text-on-surface-variant">
+<span>Showing 5 of 128 results</span>
+<div class="flex gap-xs">
+<button class="p-1 rounded hover:bg-slate-800 disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="p-1 px-3 rounded bg-primary text-white">1</button>
+<button class="p-1 px-3 rounded hover:bg-slate-800">2</button>
+<button class="p-1 px-3 rounded hover:bg-slate-800">3</button>
+<button class="p-1 rounded hover:bg-slate-800">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Atmospheric Background Element -->
+<div class="absolute -bottom-64 -right-64 w-[600px] h-[600px] bg-secondary/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+<div class="absolute -top-64 -left-64 w-[400px] h-[400px] bg-primary/10 blur-[100px] rounded-full pointer-events-none -z-10"></div>
+</main>
+<!-- Side Modal Sheet -->
+<div class="fixed top-0 right-0 h-full w-[450px] bg-slate-900 border-l border-outline-variant/20 shadow-2xl z-[60] sheet-closed transition-transform duration-300 ease-in-out" id="sideSheet">
+<div class="h-full flex flex-col p-lg">
+<div class="flex justify-between items-center mb-lg">
+<h4 class="text-headline-md font-headline-md text-inverse-primary">Application Details</h4>
+<button class="p-2 hover:bg-slate-800 rounded-full transition-colors text-outline-variant" onclick="closeSheet()">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="flex-1 space-y-lg overflow-y-auto" id="sheetContent">
+<!-- Data populated by JS -->
+<div class="flex items-center gap-md p-md bg-slate-800/40 rounded-xl border border-outline-variant/10">
+<div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
+<img class="w-full h-full object-contain" data-alt="Company logo placeholder, high definition, professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK_FCQgChLXteHbrYOQ0RkB3kgqWSanUulMQ_yUSmpMZhOyi2p7p1K1-QOVqzi-Vxw2Imk0lkTe81kRgUAnBrS6EAm4cirt_1bTrbHItiIZynFrGVreqG-hstnhc5SldXkRkcdv4pygbTSS0nuqvxyuz_jNRmCc8eVy43jhYS7V6X1U8suPo4OHXG7P7L801Xm9dXurqj7A2sxqiVow0r9zYM1_LP_Y9RagOVBPqvFQArtGMpr31AW8U2PR8REtk7o22fJP6mbTw"/>
+</div>
+<div>
+<h5 class="text-headline-md font-bold text-white" id="sheetCompany">OpenAI</h5>
+<p class="text-on-surface-variant" id="sheetPosition">Senior AI Engineer</p>
+</div>
+</div>
+<div class="space-y-md">
+<div class="flex justify-between items-center">
+<span class="text-label-md font-label-md text-outline-variant">Status</span>
+<span class="px-sm py-1 rounded-full text-label-sm font-label-sm bg-tertiary-container/20 text-tertiary-fixed-dim" id="sheetStatus">Interview</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-label-md font-label-md text-outline-variant">Applied Date</span>
+<span class="text-label-md font-label-md text-on-secondary-container" id="sheetDate">Oct 24, 2023</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-label-md font-label-md text-outline-variant">Platform</span>
+<span class="text-label-md font-label-md text-on-secondary-container" id="sheetPlatform">LinkedIn</span>
+</div>
+</div>
+<div class="border-t border-outline-variant/10 pt-lg">
+<h6 class="text-label-sm font-label-sm uppercase tracking-wider text-outline-variant mb-md">Documents Sent</h6>
+<div class="space-y-sm">
+<div class="flex items-center justify-between p-sm bg-slate-800/20 rounded-lg border border-outline-variant/10 hover:border-primary/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+<div>
+<p class="text-label-md font-label-md text-white">Resume_AI_Exec.pdf</p>
+<p class="text-label-sm font-label-sm text-outline-variant">AI-Optimized for this role</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-white" data-icon="visibility">visibility</span>
+</div>
+<div class="flex items-center justify-between p-sm bg-slate-800/20 rounded-lg border border-outline-variant/10 hover:border-primary/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="article">article</span>
+<div>
+<p class="text-label-md font-label-md text-white">Cover_Letter_V4.docx</p>
+<p class="text-label-sm font-label-sm text-outline-variant">Personalized by AI Assistant</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-white" data-icon="visibility">visibility</span>
+</div>
+<div class="flex items-center justify-between p-sm bg-slate-800/20 rounded-lg border border-outline-variant/10 hover:border-primary/40 transition-colors cursor-pointer group">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" data-icon="folder_zip">folder_zip</span>
+<div>
+<p class="text-label-md font-label-md text-white">Portfolio_Selected_Works.zip</p>
+<p class="text-label-sm font-label-sm text-outline-variant">32.4 MB</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-white" data-icon="download">download</span>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/10 pt-lg pb-lg">
+<h6 class="text-label-sm font-label-sm uppercase tracking-wider text-outline-variant mb-md">AI Insights</h6>
+<div class="p-md bg-primary-container/10 border border-primary/20 rounded-xl">
+<p class="text-body-sm text-primary-fixed-dim italic">"The hiring manager for this role at OpenAI focuses on scalable architectures. Your resume was highlighted for the Kubernetes optimization project."</p>
+</div>
+</div>
+</div>
+<div class="mt-auto flex gap-sm pt-md border-t border-outline-variant/10">
+<button class="flex-1 py-sm bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-label-md transition-colors">Add Follow-up</button>
+<button class="flex-1 py-sm bg-secondary text-white rounded-lg font-label-md hover:bg-secondary-container transition-colors shadow-lg shadow-secondary/20">Edit Application</button>
+</div>
+</div>
+</div>
+<!-- Modal Backdrop -->
+<div class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300" id="sheetBackdrop" onclick="closeSheet()"></div>
+<script>
+        function openSheet(company, position, platform, date, status) {
+            const sheet = document.getElementById('sideSheet');
+            const backdrop = document.getElementById('sheetBackdrop');
+            
+            document.getElementById('sheetCompany').innerText = company;
+            document.getElementById('sheetPosition').innerText = position;
+            document.getElementById('sheetPlatform').innerText = platform;
+            document.getElementById('sheetDate').innerText = date;
+            
+            const statusEl = document.getElementById('sheetStatus');
+            statusEl.innerText = status;
+            
+            // Basic mapping for status colors in sheet
+            const statusMap = {
+                'Interview': 'bg-tertiary-container/20 text-tertiary-fixed-dim border-tertiary-container/30',
+                'Offer': 'bg-green-500/20 text-green-400 border-green-500/30',
+                'Auto-applied': 'bg-primary/20 text-primary-fixed-dim border-primary/30',
+                'Rejected': 'bg-error/20 text-error-container border-error/30',
+                'Discovered': 'bg-slate-700/50 text-outline-variant border-outline-variant/20'
+            };
+            
+            statusEl.className = `px-sm py-1 rounded-full text-label-sm font-label-sm border ${statusMap[status] || statusMap['Discovered']}`;
+
+            backdrop.classList.remove('hidden');
+            setTimeout(() => {
+                backdrop.classList.add('opacity-100');
+                sheet.classList.remove('sheet-closed');
+                sheet.classList.add('sheet-open');
+            }, 10);
+        }
+
+        function closeSheet() {
+            const sheet = document.getElementById('sideSheet');
+            const backdrop = document.getElementById('sheetBackdrop');
+            
+            sheet.classList.add('sheet-closed');
+            sheet.classList.remove('sheet-open');
+            backdrop.classList.remove('opacity-100');
+            
+            setTimeout(() => {
+                backdrop.classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body></html>

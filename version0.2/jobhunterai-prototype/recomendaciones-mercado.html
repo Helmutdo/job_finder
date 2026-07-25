@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pituto-AI - AI Recommendations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#131b2e",
+                      "on-secondary-container": "#fefcff",
+                      "on-tertiary-container": "#fffbff",
+                      "primary": "#6b38d4",
+                      "on-surface": "#131b2e",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed": "#ffdcbb",
+                      "surface-container-highest": "#dae2fd",
+                      "on-secondary-fixed-variant": "#003ea8",
+                      "secondary-container": "#316bf3",
+                      "on-tertiary-fixed": "#2c1700",
+                      "on-tertiary": "#ffffff",
+                      "surface-container": "#eaedff",
+                      "surface-bright": "#faf8ff",
+                      "on-error": "#ffffff",
+                      "background": "#faf8ff",
+                      "secondary-fixed": "#dbe1ff",
+                      "on-surface-variant": "#494454",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#6d3bd7",
+                      "inverse-primary": "#d0bcff",
+                      "on-secondary-fixed": "#00174b",
+                      "surface-container-low": "#f2f3ff",
+                      "on-primary-fixed-variant": "#5516be",
+                      "tertiary-container": "#a76500",
+                      "surface": "#faf8ff",
+                      "surface-container-high": "#e2e7ff",
+                      "inverse-on-surface": "#eef0ff",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#dae2fd",
+                      "primary-container": "#8455ef",
+                      "primary-fixed": "#e9ddff",
+                      "surface-dim": "#d2d9f4",
+                      "on-tertiary-fixed-variant": "#673d00",
+                      "primary-fixed-dim": "#d0bcff",
+                      "on-error-container": "#93000a",
+                      "secondary": "#0051d5",
+                      "outline": "#7b7486",
+                      "inverse-surface": "#283044",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed": "#23005c",
+                      "error": "#ba1a1a",
+                      "tertiary-fixed-dim": "#ffb869",
+                      "secondary-fixed-dim": "#b4c5ff",
+                      "outline-variant": "#cbc3d7",
+                      "tertiary": "#855000",
+                      "on-primary-container": "#fffbff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "container-max": "1200px",
+                      "xl": "80px",
+                      "md": "24px",
+                      "xs": "8px",
+                      "lg": "48px",
+                      "base": "4px",
+                      "sm": "16px"
+              },
+              "fontFamily": {
+                      "label-md": ["Geist"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "display": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Geist"],
+                      "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0f172a; /* Deep dark for "executive automation" feel */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-glow {
+            box-shadow: 0 0 20px rgba(107, 56, 212, 0.15);
+            border: 1px solid rgba(107, 56, 212, 0.3);
+        }
+        .electric-accent {
+            color: #316bf3;
+        }
+        .bg-electric-accent {
+            background-color: #316bf3;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="text-on-secondary-container antialiased overflow-x-hidden">
+<!-- SIDEBAR -->
+<aside class="fixed left-0 top-0 h-screen flex flex-col py-lg px-md bg-on-background border-r border-outline-variant w-64 z-50">
+<div class="mb-lg">
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight">Pituto-AI</h1>
+<p class="text-label-sm font-label-sm text-outline-variant mt-1 uppercase tracking-widest">Executive Automation</p>
+</div>
+<nav class="flex-grow space-y-xs">
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors duration-150 group" href="index.html">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-label-md font-label-md">Profile</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-primary dark:text-inverse-primary font-bold border-r-2 border-primary bg-inverse-surface transition-colors duration-150 group" href="recomendaciones-mercado.html">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-label-md font-label-md">AI Recommendations</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors duration-150 group" href="fabrica-cv-optimizado.html">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="text-label-md font-label-md">CV Builder</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors duration-150 group" href="motor-automatizacion.html">
+<span class="material-symbols-outlined">bolt</span>
+<span class="text-label-md font-label-md">Automation Engine</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors duration-150 group" href="historial-aplicaciones.html">
+<span class="material-symbols-outlined">history</span>
+<span class="text-label-md font-label-md">History</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-xs rounded-lg text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-highest dark:hover:bg-inverse-surface transition-colors duration-150 group" href="configuracion.html">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-lg">
+<button class="w-full py-sm bg-primary text-on-primary rounded-full font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all shadow-lg" onclick="window.location.href='index.html'">
+                New Application
+            </button>
+</div>
+</aside>
+<!-- MAIN CONTENT -->
+<main class="ml-64 min-h-screen">
+<!-- TOP APP BAR -->
+<header class="fixed top-0 right-0 left-64 flex justify-between items-center px-lg h-16 bg-on-background/80 backdrop-blur-md z-40 border-b border-outline-variant/10">
+<div class="flex items-center gap-md">
+<span class="text-label-md font-label-md text-outline-variant">Market Analysis / <span class="text-inverse-primary">Recommendations</span></span>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative group">
+<span class="material-symbols-outlined text-outline-variant hover:text-primary cursor-pointer transition-colors">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-secondary rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary cursor-pointer transition-colors">help_outline</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a tech executive with a clean, high-contrast studio lighting setup, dark background, and a sharp focus on intelligent expression to match a premium SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiXVZrpMpwWF6b3oBxiWngySiFywi9uQnfTdd1UrrjOXgMNn4gq42U7uk__l2z5Tuw3jvW9mqrPpr110XeJ6BH7ySNat6ZLYTgZOTmNUy_gK2DI4QjDZ9u1dggK54X_CnGC1YgXxPENBQBNvF95gX6LKVuJ66X_V8qb53aOXO9mQhMBz7OQkEehaW38-GfvWcrXzS28zGiaNWbw53O_b6h_w9LBIaWUf6U204g0_90P6M-w9gCHbbwnt72Iqcvq1HExRhdg2R8xg"/>
+</div>
+</div>
+</header>
+<section class="pt-24 px-lg pb-xl max-w-container-max mx-auto">
+<!-- HEADER SECTION -->
+<div class="mb-lg flex justify-between items-end">
+<div>
+<h2 class="text-display font-display text-white mb-xs">Role Compatibility Analysis</h2>
+<p class="text-body-lg font-body-lg text-outline-variant max-w-2xl">Based on your historical deployments, GitHub contributions, and technical assessments, Pituto-AI has identified high-probability pivot points.</p>
+</div>
+<div class="bg-inverse-surface p-sm rounded-xl border border-outline-variant/20">
+<div class="text-label-sm font-label-sm text-outline-variant mb-1">AI CONFIDENCE</div>
+<div class="flex items-center gap-xs">
+<div class="h-2 w-32 bg-on-background rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[94%]"></div>
+</div>
+<span class="text-label-md font-label-md text-primary">94%</span>
+</div>
+</div>
+</div>
+<!-- BENTO GRID CONTENT -->
+<div class="bento-grid">
+<!-- FEATURED RECOMMENDATION CARD -->
+<div class="col-span-12 lg:col-span-8 glass-card rounded-full p-lg relative overflow-hidden ai-glow">
+<div class="absolute top-0 right-0 w-64 h-64 opacity-20">
+
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="text-label-md font-label-md text-primary tracking-widest uppercase">Roles Recommended by Pituto-AI</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div>
+<h3 class="text-headline-lg font-headline-lg text-white mb-md">Infrastructure Engineer (SRE)</h3>
+<p class="text-body-md font-body-md text-outline-variant mb-lg">
+                                    While you are currently targeting Backend roles, your profile shows significant depth in <span class="text-white font-bold">Kubernetes orchestration</span> and <span class="text-white font-bold">CI/CD automation</span>. Transitioning to SRE would increase your salary ceiling by <span class="electric-accent">22%</span>.
+                                </p>
+<div class="flex flex-wrap gap-xs">
+<span class="px-sm py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-label-sm font-label-sm">Terraform</span>
+<span class="px-sm py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-label-sm font-label-sm">Prometheus</span>
+<span class="px-sm py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-label-sm font-label-sm">Go</span>
+</div>
+</div>
+<div class="flex flex-col justify-center items-center text-center bg-on-background/40 rounded-xl p-md border border-outline-variant/10">
+<div class="text-display font-display electric-accent mb-xs">+40%</div>
+<div class="text-label-md font-label-md text-white uppercase tracking-tighter">Compatibility Match</div>
+<div class="mt-md text-body-sm font-body-sm text-outline-variant italic">
+                                    "Your infrastructure strength makes you a Tier-1 candidate for SRE pipelines."
+                                </div>
+</div>
+</div>
+</div>
+</div>
+<!-- COMPARISON CARD -->
+<div class="col-span-12 lg:col-span-4 glass-card rounded-full p-lg flex flex-col justify-between">
+<div>
+<h4 class="text-headline-md font-headline-md text-white mb-md">Strategic Pivot</h4>
+<div class="space-y-md">
+<div class="relative pl-md border-l-2 border-outline-variant">
+<div class="text-label-sm font-label-sm text-outline-variant mb-1 uppercase">Job You Seek</div>
+<div class="text-body-lg font-body-lg text-white">Backend Developer Junior</div>
+<div class="text-label-md font-label-md text-error/80 mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_down</span> High Competition
+                                </div>
+</div>
+<div class="flex justify-center my-xs">
+<span class="material-symbols-outlined text-outline-variant">swap_vert</span>
+</div>
+<div class="relative pl-md border-l-2 border-secondary">
+<div class="text-label-sm font-label-sm text-secondary mb-1 uppercase">Job AI Recommends</div>
+<div class="text-body-lg font-body-lg text-white">Jr DevOps / SRE</div>
+<div class="text-label-md font-label-md text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> Low Supply / High Demand
+                                </div>
+</div>
+</div>
+</div>
+<button class="mt-lg w-full py-sm border border-outline-variant rounded-lg text-white font-label-md hover:bg-white/5 transition-colors" onclick="window.location.href='fabrica-cv-optimizado.html'">
+                        View Gap Analysis
+                    </button>
+</div>
+<!-- MARKET VELOCITY CHART (PLACEHOLDER) -->
+<div class="col-span-12 lg:col-span-7 glass-card rounded-full p-lg h-80 relative overflow-hidden">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<h4 class="text-headline-md font-headline-md text-white">Market Hiring Velocity</h4>
+<p class="text-label-sm font-label-sm text-outline-variant">Roles filled per 30 days (Industry Avg)</p>
+</div>
+<div class="flex gap-sm">
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="text-label-sm font-label-sm text-outline-variant">SRE</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-label-sm font-label-sm text-outline-variant">Backend</span>
+</div>
+</div>
+</div>
+<!-- Mock Chart -->
+<div class="absolute bottom-0 left-0 right-0 h-40 flex items-end px-lg gap-sm">
+<div class="flex-1 bg-primary/20 rounded-t-lg transition-all hover:bg-primary/40 group relative" style="height: 40%">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 text-label-sm font-label-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity">12d</div>
+</div>
+<div class="flex-1 bg-secondary/20 rounded-t-lg transition-all hover:bg-secondary/40 group relative" style="height: 85%">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 text-label-sm font-label-sm text-secondary opacity-0 group-hover:opacity-100 transition-opacity">4d</div>
+</div>
+<div class="flex-1 bg-primary/20 rounded-t-lg transition-all hover:bg-primary/40 group relative" style="height: 45%"></div>
+<div class="flex-1 bg-secondary/20 rounded-t-lg transition-all hover:bg-secondary/40 group relative" style="height: 90%"></div>
+<div class="flex-1 bg-primary/20 rounded-t-lg transition-all hover:bg-primary/40 group relative" style="height: 38%"></div>
+<div class="flex-1 bg-secondary/20 rounded-t-lg transition-all hover:bg-secondary/40 group relative" style="height: 75%"></div>
+<div class="flex-1 bg-primary/20 rounded-t-lg transition-all hover:bg-primary/40 group relative" style="height: 50%"></div>
+<div class="flex-1 bg-secondary/20 rounded-t-lg transition-all hover:bg-secondary/40 group relative" style="height: 95%"></div>
+</div>
+</div>
+<!-- KEYWORDS TO BOOST -->
+<div class="col-span-12 lg:col-span-5 glass-card rounded-full p-lg">
+<h4 class="text-headline-md font-headline-md text-white mb-md">Mandatory IT Keywords</h4>
+<p class="text-body-sm font-body-sm text-outline-variant mb-lg">Include these in your resume to bypass 99% of current SRE applicant tracking systems.</p>
+<div class="space-y-sm">
+<div class="flex justify-between items-center p-sm bg-on-background/30 rounded-lg border-l-4 border-secondary">
+<span class="font-label-md text-white">Observability Stack (ELK/Grafana)</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex justify-between items-center p-sm bg-on-background/30 rounded-lg border-l-4 border-primary">
+<span class="font-label-md text-white">Infrastructure as Code (IaC)</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex justify-between items-center p-sm bg-on-background/30 rounded-lg border-l-4 border-outline">
+<span class="font-label-md text-white">Service Mesh (Istio/Linkerd)</span>
+<span class="text-label-sm font-label-sm text-outline-variant uppercase">Missing</span>
+</div>
+<div class="flex justify-between items-center p-sm bg-on-background/30 rounded-lg border-l-4 border-secondary">
+<span class="font-label-md text-white">Cloud Native (AWS/GCP)</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<button class="mt-lg w-full flex items-center justify-center gap-xs text-primary font-label-md py-xs hover:bg-primary/5 rounded-lg transition-colors" onclick="window.location.href='fabrica-cv-optimizado.html'">
+                        Add to CV Builder <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- ATMOSPHERIC BACKGROUND DECO -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 opacity-30">
+<div class="absolute top-[10%] right-[10%] w-[500px] h-[500px] bg-primary rounded-full blur-[150px] opacity-20"></div>
+<div class="absolute bottom-[20%] left-[20%] w-[400px] h-[400px] bg-secondary rounded-full blur-[150px] opacity-10"></div>
+</div>
+</section>
+</main>
+<script>
+        // Micro-interactions for hover effects
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+                
+                // Slight tilt effect
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+            });
+        });
+
+        // Simple typing effect for AI "insights"
+        const insights = [
+            "Market volatility favors specialized infrastructure roles this quarter.",
+            "Backend Junior market saturation is at 88%. Pivot recommended.",
+            "Your profile matches 95% of 'Fortune 500' SRE requirements."
+        ];
+        
+        let insightIndex = 0;
+        const insightElement = document.querySelector('.italic');
+        
+        if (insightElement) {
+            setInterval(() => {
+                insightIndex = (insightIndex + 1) % insights.length;
+                insightElement.style.opacity = 0;
+                setTimeout(() => {
+                    insightElement.textContent = `"${insights[insightIndex]}"`;
+                    insightElement.style.opacity = 1;
+                }, 500);
+            }, 6000);
+        }
+    </script>
+</body></html>
