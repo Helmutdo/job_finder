@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard de Análisis de Match - Pituto-AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#2c1700",
+                        "secondary-container": "#316bf3",
+                        "surface-bright": "#faf8ff",
+                        "on-surface-variant": "#494454",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#8455ef",
+                        "on-primary-container": "#fffbff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#283044",
+                        "surface-dim": "#d2d9f4",
+                        "surface-container": "#eaedff",
+                        "on-secondary-fixed": "#00174b",
+                        "surface-container-low": "#f2f3ff",
+                        "secondary": "#0051d5",
+                        "tertiary-container": "#a76500",
+                        "inverse-primary": "#d0bcff",
+                        "on-tertiary-fixed-variant": "#673d00",
+                        "on-primary-fixed": "#23005c",
+                        "tertiary": "#855000",
+                        "surface-tint": "#6d3bd7",
+                        "primary": "#6b38d4",
+                        "background": "#faf8ff",
+                        "surface-variant": "#dae2fd",
+                        "on-secondary": "#ffffff",
+                        "outline": "#7b7486",
+                        "surface-container-highest": "#dae2fd",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "outline-variant": "#cbc3d7",
+                        "on-surface": "#131b2e",
+                        "tertiary-fixed": "#ffdcbb",
+                        "on-secondary-container": "#fefcff",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#e9ddff",
+                        "surface-container-high": "#e2e7ff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb869",
+                        "surface": "#faf8ff",
+                        "inverse-on-surface": "#eef0ff",
+                        "on-background": "#131b2e",
+                        "on-tertiary-container": "#fffbff",
+                        "primary-fixed-dim": "#d0bcff",
+                        "on-primary-fixed-variant": "#5516be"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "lg": "48px",
+                        "md": "24px",
+                        "base": "4px",
+                        "xl": "80px",
+                        "container-max": "1200px",
+                        "sm": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Geist"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Geist"],
+                        "body-md": ["Inter"],
+                        "display": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #faf8ff;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .ai-border {
+            position: relative;
+            background: #fff;
+            border-radius: 0.5rem;
+        }
+        .ai-border::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            z-index: -1;
+            background: linear-gradient(to right, #6b38d4, #316bf3);
+            border-radius: inherit;
+            opacity: 0.2;
+        }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-surface w-full top-0 sticky border-b border-outline-variant z-50">
+<div class="flex justify-between items-center px-md py-xs max-w-container-max mx-auto">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary font-headline-md text-headline-md" data-icon="precision_manufacturing">precision_manufacturing</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Pituto-AI</span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="index.html">Dashboard</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="fabrica-contenido.html">Fábrica</a>
+<a class="text-primary font-label-md text-label-md font-bold hover:opacity-80 transition-opacity" href="analisis-match.html">Matches</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:opacity-80 transition-opacity" href="#">Settings</a>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a corporate executive in a modern, brightly lit office environment. The subject is a woman with a confident expression, wearing a tailored blazer. The background features soft bokeh of a high-tech workspace with clean lines and a premium SaaS aesthetic. Lighting is soft and natural, emphasizing a professional yet approachable tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJJV3DV3d-Jxc3p9GOI0o571x5tqAMETcK9Vqaw-RzUf_VxGTvU2ImuISR9-7uXCZTcjLWE5DSBwhAVK6fdAbLGqgktMq-c2m0SA0uEEhn7T2DjPAhmqtmp5mt_xJmjdrIYDfIcLT1Z1ehIEzPdRVgrwFUD2VAeuTrtWKNvmszoKIi-ayrfHeHk2LXmrHHMHKt3z1eMPK01mjLTx_IE9OU_R5B7zOZVPC_TObpk3wcjytRpew3KLpOCfhDabI3BX-GJbqvZAAk_A"/>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-md py-lg min-h-screen">
+<!-- Header Section -->
+<div class="mb-xl flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<button class="flex items-center gap-base text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors mb-xs" onclick="window.location.href='index.html'">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_back">arrow_back</span>
+                    Volver atrás
+                </button>
+<h1 class="font-display text-display text-on-background">Resultado del Análisis: <span class="text-primary">Full Stack Developer</span></h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg mt-xs">Análisis detallado basado en tu CV y la descripción de la vacante.</p>
+</div>
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-md py-sm rounded-xl shadow-lg hover:opacity-90 transform active:scale-95 transition-all flex items-center gap-xs" onclick="window.location.href='fabrica-contenido.html'">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                Generar Postulación Optimizada
+            </button>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Match Score Card -->
+<div class="md:col-span-4 glass-card p-md rounded-xl flex flex-col items-center justify-center text-center">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-lg">Puntuación de Match</h3>
+<div class="relative flex items-center justify-center mb-md">
+<svg class="w-48 h-48">
+<circle class="text-surface-container-highest" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-secondary-container progress-ring__circle" cx="96" cy="96" fill="transparent" r="80" stroke="currentColor" stroke-dasharray="502.65" stroke-dashoffset="90.47" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-display text-display text-secondary-container">82%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Excelente</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant px-sm">
+                    Tu perfil tiene una alta compatibilidad con el stack tecnológico requerido, especialmente en el ecosistema React/Node.
+                </p>
+</div>
+<!-- AI Insight Summary -->
+<div class="md:col-span-8 ai-border p-md rounded-xl shadow-sm">
+<div class="flex items-center gap-sm mb-md">
+<div class="p-base bg-primary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">AI Career Insights</h3>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface mb-md leading-relaxed">
+                    Hemos analizado 45 requerimientos específicos. Tienes dominio total en el <span class="font-bold text-primary">85% del Backend</span> y un <span class="font-bold text-secondary">78% del Frontend</span> solicitado. La principal oportunidad de mejora reside en la experiencia con despliegues en infraestructuras específicas mencionadas como AWS Lambda.
+                </p>
+<div class="flex flex-wrap gap-xs">
+<span class="bg-surface-container-high text-on-secondary-fixed-variant px-sm py-base rounded-full font-label-sm text-label-sm">#TopMatch</span>
+<span class="bg-surface-container-high text-on-secondary-fixed-variant px-sm py-base rounded-full font-label-sm text-label-sm">#ReactExpert</span>
+<span class="bg-surface-container-high text-on-secondary-fixed-variant px-sm py-base rounded-full font-label-sm text-label-sm">#HighEarningPotential</span>
+</div>
+</div>
+<!-- Pros Section (Skills Met) -->
+<div class="md:col-span-6 bg-white border border-outline-variant rounded-xl p-md">
+<div class="flex items-center gap-xs mb-lg text-secondary">
+<span class="material-symbols-outlined" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<h3 class="font-headline-md text-headline-md">Habilidades Cumplidas</h3>
+</div>
+<ul class="space-y-sm">
+<li class="flex items-start gap-sm p-sm rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="mt-base text-secondary">
+<span class="material-symbols-outlined text-[20px]" data-icon="check">check</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Arquitectura Microservicios</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">4 años de experiencia demostrada en proyectos similares.</p>
+</div>
+</li>
+<li class="flex items-start gap-sm p-sm rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="mt-base text-secondary">
+<span class="material-symbols-outlined text-[20px]" data-icon="check">check</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">React &amp; State Management</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dominio avanzado de Redux Toolkit y Context API.</p>
+</div>
+</li>
+<li class="flex items-start gap-sm p-sm rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="mt-base text-secondary">
+<span class="material-symbols-outlined text-[20px]" data-icon="check">check</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Node.js (Express/NestJS)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Fuerte base en desarrollo de APIs escalables.</p>
+</div>
+</li>
+<li class="flex items-start gap-sm p-sm rounded-lg hover:bg-surface-container-low transition-colors group">
+<div class="mt-base text-secondary">
+<span class="material-symbols-outlined text-[20px]" data-icon="check">check</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">SQL &amp; NoSQL Databases</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Experiencia con PostgreSQL y MongoDB.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Gaps Section (Missing Skills/Warnings) -->
+<div class="md:col-span-6 bg-white border border-outline-variant rounded-xl p-md">
+<div class="flex items-center gap-xs mb-lg text-tertiary">
+<span class="material-symbols-outlined" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h3 class="font-headline-md text-headline-md">Gaps Identificados</h3>
+</div>
+<ul class="space-y-sm">
+<li class="flex items-start gap-sm p-sm rounded-lg border border-tertiary/10 bg-tertiary-fixed/5 group">
+<div class="mt-base text-tertiary">
+<span class="material-symbols-outlined text-[20px]" data-icon="error_outline">error_outline</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface font-bold">Infraestructura AWS (Serverless)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tu CV no menciona experiencia directa con AWS Lambda o API Gateway.</p>
+<button class="mt-xs text-tertiary font-label-sm text-label-sm hover:underline">Ver cómo mitigar este gap</button>
+</div>
+</li>
+<li class="flex items-start gap-sm p-sm rounded-lg border border-tertiary/10 bg-tertiary-fixed/5 group">
+<div class="mt-base text-tertiary">
+<span class="material-symbols-outlined text-[20px]" data-icon="error_outline">error_outline</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface font-bold">Testing Unitario (E2E)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Se requiere Cypress; se sugiere destacar tu experiencia con Jest.</p>
+</div>
+</li>
+<li class="flex items-start gap-sm p-sm rounded-lg border border-tertiary/10 bg-tertiary-fixed/5 group">
+<div class="mt-base text-tertiary">
+<span class="material-symbols-outlined text-[20px]" data-icon="error_outline">error_outline</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface font-bold">Idioma: Inglés C1</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">La vacante requiere fluidez técnica alta. Se recomienda ajustar el tono.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Next Step Card -->
+<div class="md:col-span-12 glass-card p-xl rounded-2xl text-center flex flex-col items-center">
+<div class="max-w-2xl">
+<h2 class="font-headline-lg text-headline-lg mb-md">¿Listo para destacar entre los candidatos?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg">
+                        Nuestra IA puede redactar una carta de presentación y ajustar los puntos clave de tu experiencia para abordar directamente los gaps identificados y resaltar tus fortalezas ganadoras.
+                    </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-md">
+<button class="w-full sm:w-auto bg-primary-container text-on-primary-container font-label-md text-label-md px-xl py-sm rounded-xl shadow-xl hover:scale-105 transition-transform flex items-center justify-center gap-xs" onclick="window.location.href='fabrica-contenido.html'">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+                            Generar Carta de Presentación
+                        </button>
+<button class="w-full sm:w-auto border border-outline text-on-surface font-label-md text-label-md px-xl py-sm rounded-xl hover:bg-surface-container transition-colors" onclick="window.location.href='fabrica-contenido.html'">
+                            Refinar mi CV
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-sm py-xs bg-surface border-t border-outline-variant shadow-md z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="index.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="fabrica-contenido.html">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-sm text-label-sm">Fábrica</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1" href="analisis-match.html">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-sm text-label-sm">Matches</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple entry animation for cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.glass-card, .ai-border, .border');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+
+            // Progress ring animation
+            const circle = document.querySelector('.progress-ring__circle');
+            const radius = circle.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+            
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = circumference;
+
+            const setProgress = (percent) => {
+                const offset = circumference - (percent / 100 * circumference);
+                circle.style.strokeDashoffset = offset;
+            }
+
+            // Animate to 82%
+            setTimeout(() => setProgress(82), 500);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<title>Pituto-AI - Optimiza tu Postulación</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#2c1700",
+                    "secondary-container": "#316bf3",
+                    "surface-bright": "#faf8ff",
+                    "on-surface-variant": "#494454",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#8455ef",
+                    "on-primary-container": "#fffbff",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#b4c5ff",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#283044",
+                    "surface-dim": "#d2d9f4",
+                    "surface-container": "#eaedff",
+                    "on-secondary-fixed": "#00174b",
+                    "surface-container-low": "#f2f3ff",
+                    "secondary": "#0051d5",
+                    "tertiary-container": "#a76500",
+                    "inverse-primary": "#d0bcff",
+                    "on-tertiary-fixed-variant": "#673d00",
+                    "on-primary-fixed": "#23005c",
+                    "tertiary": "#855000",
+                    "surface-tint": "#6d3bd7",
+                    "primary": "#6b38d4",
+                    "background": "#faf8ff",
+                    "surface-variant": "#dae2fd",
+                    "on-secondary": "#ffffff",
+                    "outline": "#7b7486",
+                    "surface-container-highest": "#dae2fd",
+                    "secondary-fixed": "#dbe1ff",
+                    "on-secondary-fixed-variant": "#003ea8",
+                    "outline-variant": "#cbc3d7",
+                    "on-surface": "#131b2e",
+                    "tertiary-fixed": "#ffdcbb",
+                    "on-secondary-container": "#fefcff",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#e9ddff",
+                    "surface-container-high": "#e2e7ff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb869",
+                    "surface": "#faf8ff",
+                    "inverse-on-surface": "#eef0ff",
+                    "on-background": "#131b2e",
+                    "on-tertiary-container": "#fffbff",
+                    "primary-fixed-dim": "#d0bcff",
+                    "on-primary-fixed-variant": "#5516be"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "lg": "48px",
+                    "md": "24px",
+                    "base": "4px",
+                    "xl": "80px",
+                    "container-max": "1200px",
+                    "sm": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["Geist"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "body-md": ["Inter"],
+                    "display": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #faf8ff;
+            color: #131b2e;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid #e2e8f0;
+        }
+        .tab-active {
+            border-bottom: 2px solid #6b38d4;
+            color: #6b38d4;
+        }
+        .drop-zone-active {
+            border-color: #6b38d4;
+            background: #f2f3ff;
+        }
+        .ai-border {
+            position: relative;
+            background: #fff;
+            border-radius: 0.5rem;
+        }
+        .ai-border::before {
+            content: "";
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            z-index: -1;
+            background: linear-gradient(to right, #6b38d4, #316bf3);
+            border-radius: 0.6rem;
+            opacity: 0.15;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant z-50">
+<div class="flex justify-between items-center px-md py-xs max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary font-headline-md text-headline-md" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Pituto-AI</span>
+</div>
+<div class="flex items-center gap-md">
+<nav class="hidden md:flex gap-md">
+<a class="font-label-md text-label-md text-primary font-bold hover:opacity-80 transition-opacity duration-150" href="index.html">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity duration-150" href="fabrica-contenido.html">Fábrica</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity duration-150" href="analisis-match.html">Matches</a>
+</nav>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="A professional studio headshot of a modern executive in a bright, minimalist office setting. The lighting is soft and high-key, reflecting a premium SaaS aesthetic. The color palette is clean with whites and light greys, ensuring the user profile looks sophisticated and trustworthy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKscpF7HQAYnRumCE9E-uxmcU-AAESuz-lfHmZAYhNIIBtkkxRUo7zr3B53JTE1WGl_CUSMtKaLNl_ZrOKNYf3FnAlV94zXznITH5y1NZ42nSmQzN-PdEvErh7kDILDkDirxm8K5t_Oa_IIBAtTeCPRqAuP9Z10ZtahpZX-vokdWqjPV5mLKRj9hIO2yyXsXyU0-oCnM2NlvK9rI_BX68x7IUY4pYiz-tvbG3NH5RWkSE6BybkeIn5LUjXTWGpUrnx9PNMimk-hA"/>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-start py-xl px-md max-w-container-max mx-auto w-full">
+<!-- Hero Section -->
+<section class="text-center mb-xl max-w-3xl">
+<h1 class="font-display text-display text-on-background mb-md animate-fade-in">
+                Optimiza tu postulación para cualquier empleo en segundos.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Nuestra IA analiza la descripción del cargo y ajusta tu CV para maximizar tus posibilidades de ser llamado a entrevista.
+            </p>
+</section>
+<!-- Main Form Grid (Bento Style) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter w-full">
+<!-- Left Panel: Job Details -->
+<div class="lg:col-span-7 bg-white p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col gap-md">
+<div class="flex items-center gap-sm border-b border-outline-variant pb-md mb-xs">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">work</span>
+<h2 class="font-headline-md text-headline-md">Detalles de la Vacante</h2>
+</div>
+<!-- Tabs Navigation -->
+<div class="flex border-b border-outline-variant gap-md">
+<button class="pb-sm font-label-md text-label-md tab-active transition-all duration-200" id="tab-url" onclick="switchTab('url')">Pegar URL</button>
+<button class="pb-sm font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all duration-200" id="tab-text" onclick="switchTab('text')">Pegar Texto</button>
+</div>
+<!-- Tab Contents -->
+<div class="pt-sm space-y-md" id="content-url">
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">URL del Empleo</label>
+<div class="relative">
+<input class="w-full px-md py-sm rounded-lg border border-outline-variant focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all font-body-md text-body-md" placeholder="https://linkedin.com/jobs/view/..." type="text"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant">link</span>
+</div>
+<p class="text-label-sm text-on-surface-variant italic">Extraeremos automáticamente los requerimientos clave.</p>
+</div>
+<div class="pt-sm space-y-md hidden" id="content-text">
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Descripción del Cargo</label>
+<textarea class="w-full px-md py-sm rounded-lg border border-outline-variant focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all font-body-md text-body-md resize-none" placeholder="Pega aquí la descripción completa del cargo..." rows="6"></textarea>
+</div>
+</div>
+<!-- Right Panel: Resume Upload -->
+<div class="lg:col-span-5 flex flex-col gap-gutter">
+<div class="ai-border p-lg flex flex-col gap-md h-full justify-between shadow-sm">
+<div>
+<div class="flex items-center gap-sm border-b border-outline-variant pb-md mb-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">description</span>
+<h2 class="font-headline-md text-headline-md">Tu Currículum</h2>
+</div>
+<!-- Drag and Drop Zone -->
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-xl flex flex-col items-center justify-center text-center gap-sm transition-all cursor-pointer hover:bg-surface-container-low" id="drop-zone" onclick="document.getElementById('file-input').click()">
+<input accept=".pdf,.doc,.docx" class="hidden" id="file-input" type="file"/>
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mb-xs">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 0;">upload_file</span>
+</div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Haz clic o arrastra tu archivo</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Soporta PDF, Word (Max. 5MB)</p>
+</div>
+<div class="hidden mt-md p-sm bg-surface-container-low rounded-lg flex items-center justify-between border border-outline-variant" id="file-preview">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="font-label-md text-label-md truncate max-w-[200px]" id="file-name">cv-final-2024.pdf</span>
+</div>
+<button class="text-error hover:opacity-70 transition-opacity" onclick="removeFile(event)">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full py-md bg-secondary text-on-secondary rounded-xl font-headline-md text-headline-md shadow-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-md group" onclick="window.location.href='analisis-match.html'">
+<span>Analizar Compatibilidad</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">bolt</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Trust Badges / Stats -->
+<div class="mt-xl grid grid-cols-2 md:grid-cols-4 gap-md w-full opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="flex flex-col items-center">
+<span class="font-headline-lg text-headline-lg text-on-background">98%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Efectividad ATS</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-headline-lg text-headline-lg text-on-background">2s</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Tiempo de Análisis</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-headline-lg text-headline-lg text-on-background">15k+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Usuarios Activos</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-headline-lg text-headline-lg text-on-background">24/7</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">IA Disponible</span>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-sm py-xs bg-surface border-t border-outline-variant shadow-md z-50">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all" href="index.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-sm font-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="fabrica-contenido.html">
+<span class="material-symbols-outlined">description</span>
+<span class="text-label-sm font-label-sm">Fábrica</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="analisis-match.html">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="text-label-sm font-label-sm">Matches</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-sm font-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        function switchTab(type) {
+            const tabUrl = document.getElementById('tab-url');
+            const tabText = document.getElementById('tab-text');
+            const contentUrl = document.getElementById('content-url');
+            const contentText = document.getElementById('content-text');
+
+            if (type === 'url') {
+                tabUrl.classList.add('tab-active');
+                tabUrl.classList.remove('text-on-surface-variant');
+                tabText.classList.remove('tab-active');
+                tabText.classList.add('text-on-surface-variant');
+                contentUrl.classList.remove('hidden');
+                contentText.classList.add('hidden');
+            } else {
+                tabText.classList.add('tab-active');
+                tabText.classList.remove('text-on-surface-variant');
+                tabUrl.classList.remove('tab-active');
+                tabUrl.classList.add('text-on-surface-variant');
+                contentText.classList.remove('hidden');
+                contentUrl.classList.add('hidden');
+            }
+        }
+
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const filePreview = document.getElementById('file-preview');
+        const fileName = document.getElementById('file-name');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.add('drop-zone-active'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.remove('drop-zone-active'), false);
+        });
+
+        dropZone.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        fileInput.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                fileName.textContent = file.name;
+                filePreview.classList.remove('hidden');
+                dropZone.classList.add('hidden');
+            }
+        }
+
+        function removeFile(e) {
+            e.stopPropagation();
+            fileInput.value = '';
+            filePreview.classList.add('hidden');
+            dropZone.classList.remove('hidden');
+        }
+    </script>
+</body></html>
